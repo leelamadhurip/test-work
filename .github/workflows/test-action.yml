@@ -1,0 +1,39 @@
+name: Example Workflow with Email Step
+
+# Trigger the workflow on push to main branch or manually
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 22f2001149@ds.study.iitm.ac.in
+        run: |
+          echo "Hello, world!"
+          echo "This step contains the email address in its name"
+          echo "Current date: $(date)"
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Run tests
+        run: |
+          echo "Running example tests..."
+          echo "All tests passed!"
+          
+      - name: Display environment info
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "GitHub Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
